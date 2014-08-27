@@ -12,11 +12,13 @@
 </div>
 <script src="//cdnjscn.b0.upaiyun.com/libs/fingerprintjs/v0.5.1/fingerprint.min.js"></script>
 <script>
-document.getElementById('fingerprint').innerText = new Fingerprint({
-  canvas: true,
-  hasher: function (key) {
-    key = key.substring(key.indexOf('#')) // remove user agent
-    return this.murmurhash3_32_gc(key, 63)
-  }
-}).get()
+document.addEventListener('WeixinJSBridgeReady', function () {
+  document.getElementById('fingerprint').innerText = new Fingerprint({
+    canvas: true,
+    hasher: function (key) {
+      key = key.substring(key.indexOf('#')) // remove user agent
+      return this.murmurhash3_32_gc(key, 63)
+    }
+  }).get()
+})
 </script>
