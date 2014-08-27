@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>设备指纹测试</title>
+<link rel="stylesheet" href="//cdnjscn.b0.upaiyun.com/libs/semantic-ui/0.13.0/css/semantic.min.css">
+<div class="ui icon message">
+  <i class="doctor icon"></i>
+  <div class="content">
+    <div class="header">该设备指纹是</div>
+    <p id="fingerprint"></p>
+  </div>
+</div>
+<script src="//cdnjscn.b0.upaiyun.com/libs/fingerprintjs/v0.5.1/fingerprint.min.js"></script>
+<script>
+document.getElementById('fingerprint').innerText = WeixinJSBridge ? new Fingerprint({
+  screen_resolution: true,
+  canvas: true,
+  hasher: function (x) { return x }
+}).get() : '请使用微信查看'
+</script>
