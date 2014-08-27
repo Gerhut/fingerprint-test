@@ -7,16 +7,19 @@
   <i class="doctor icon"></i>
   <div class="content">
     <div class="header">该设备指纹是</div>
-    <p id="fingerprint"></p>
+    <p id="fingerprint">请使用微信查看</p>
   </div>
 </div>
 <script src="//cdnjscn.b0.upaiyun.com/libs/fingerprintjs/v0.5.1/fingerprint.min.js"></script>
 <script>
-document.getElementById('fingerprint').innerText = window.WeixinJSBridge ? new Fingerprint({
-  canvas: true,
-  hasher: function (key, len) {
-    key = key.substring(key.indexOf('#')) // remove user agent
-    return this.murmurhash3_32_gc(key, 63)
-  }
-}).get() : '请使用微信查看'
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+  document.getElementById('fingerprint').innerText = new Fingerprint({
+    canvas: true,
+    hasher: function (key) {
+      key = key.substring(key.indexOf('#')) // remove user agent
+      return this.murmurhash3_32_gc(key, 63)
+    }
+  }).get()
+});
+ : ''
 </script>
