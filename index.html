@@ -12,7 +12,7 @@
 </div>
 <script src="//cdnjscn.b0.upaiyun.com/libs/fingerprintjs/v0.5.1/fingerprint.min.js"></script>
 <script>
-document.getElementById('fingerprint').innerText = WeixinJSBridge ? new Fingerprint({
+document.getElementById('fingerprint').innerText = window.WeixinJSBridge ? new Fingerprint({
   screen_resolution: true,
   canvas: true  
 }).get() : '请使用微信查看'
