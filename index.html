@@ -12,7 +12,7 @@
 </div>
 <script src="//cdnjscn.b0.upaiyun.com/libs/fingerprintjs/v0.5.1/fingerprint.min.js"></script>
 <script>
-document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+document.addEventListener('WeixinJSBridgeReady', function () {
   document.getElementById('fingerprint').innerText = new Fingerprint({
     canvas: true,
     hasher: function (key) {
