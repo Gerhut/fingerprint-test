@@ -13,12 +13,8 @@
 <script src="//cdnjscn.b0.upaiyun.com/libs/fingerprintjs/v0.5.1/fingerprint.min.js"></script>
 <script>
 document.addEventListener('WeixinJSBridgeReady', function () {
-  document.getElementById('fingerprint').innerText = new Fingerprint({
-    canvas: true,
-    hasher: function (key) {
-      key = key.substring(key.indexOf('#')) // remove user agent
-      return this.murmurhash3_32_gc(key, 63)
-    }
-  }).get()
+  var fp = Fingerprint.prototype
+  document.getElementById('fingerprint').innerText =
+    fp.murmurhash3_32_gc(fp.getCanvasFingerprint(), 63)
 })
 </script>
